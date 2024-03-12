@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flipping Card</title>
+<style>
+    body{
+        background: rgb(172, 163, 163);
+        
+    }
+    .card-container {
+        width: 300px;
+        height: 500px;
+        perspective: 1000px;
+        margin: 50px auto;
+       
+        
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+        
+    }
+
+    .card.flipped {
+        transform: rotateY(180deg);
+    }
+
+    .card-face {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+    }
+
+    .front {
+        background: #f0f0f0;
+        border-radius: 1rem;
+    }
+
+    .back {
+        background: #b0b0b0;
+        transform: rotateY(180deg);
+        border-radius: 1rem;
+    }
+
+    .message {
+        text-align: center;
+        padding: 20px;
+    }
+    img{
+        width: 100%; 
+        height: 100%; 
+        border-radius: 1rem;
+        object-fit:cover;
+    }
+    .flip-btn{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    button{
+        width: 100px;
+        height: 30px;
+        position: relative;
+        top: -55px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        color: black;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+        border-radius: 0.5rem;
+       
+       
+    }
+</style>
+</head>
+<body>
+<div class="card-container">
+    <div class="card">
+        <div class="card-face front">
+            <img src="./images/story-1.jpg" alt="Front Image">
+            <div class="flip-btn">
+                <button>Click to Flip!</button>
+            </div>
+        </div>
+        <div class="card-face back">
+            <div class="message">
+                <h2>Back of the Card</h2>
+                <p>This is the message on the back of the card.</p>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="flip-btn">
+        <button>Flip the Card!</button>
+    </div> -->
+</div>
+<script>
+    document.querySelector('.card').addEventListener('click', function() {
+        this.classList.toggle('flipped');
+    });
+</script>
+</body>
+</html>
